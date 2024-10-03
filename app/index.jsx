@@ -1,10 +1,15 @@
-import {  ScrollView, Text, View } from "react-native";
+import {  SafeAreaView, Text, View } from "react-native";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
+import { Link } from "expo-router";
+
 export default function Index() {
   return (
-    <View style={{flex:1}} className="h-full flex-1 bg-red-500">
-     <ExpoStatusBar backgroundColor="rgba(133,242,242,0.7)" style="dark" translucent={false} />
-      <Text className = " text-white">Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <SafeAreaView className=" flex-1 bg-pink-500">
+      <ExpoStatusBar backgroundColor="pink" style="dark" translucent={false} />
+      <Link href={"/(tabs)/home"}>
+      
+        <Text className = " text-white" >Go to home!</Text>
+      </Link>
+    </SafeAreaView>
   );
 }
