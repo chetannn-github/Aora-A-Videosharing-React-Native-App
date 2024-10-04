@@ -1,5 +1,8 @@
 # Welcome to your Aora app 👋
-![Landing Screen](./assets/preview/homepage.jpeg)
+<p float="left">
+  <img src="./assets/preview/homepage.jpeg" width="300" />
+  
+</p>
 
 ## Get started
 
