@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <View>
       <Text>Profile</Text>
-      <Link href={"/account"}><Text>Go to account Info</Text></Link>
+      
       
     </View>
   )

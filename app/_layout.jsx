@@ -7,13 +7,8 @@ import { StatusBar } from 'expo-status-bar'
 const RootLayout = () => {
   return (
  
-     <SafeAreaView className= "h-full bg-red-300 ">
-     {/* <Text>RootLayout</Text> */}
-      {/* <Slot/>  */}
+     <SafeAreaView className= "h-full bg-red-500 ">
      
-    
-    {/* <StatusBar backgroundColor='blue'/> */}
-
     {/* stack navigation setup */}
     <Stack > 
       
@@ -32,11 +27,7 @@ const RootLayout = () => {
       options={{headerStyle:{backgroundColor:"red" } , headerShown:false,headerBackButtonMenuEnabled:true,animation:'slide_from_bottom'}}>
         
       </Stack.Screen> 
-       <Stack.Screen
-      name='account'
-      options={{headerStyle:{backgroundColor:"red" } , headerShown:false,headerBackButtonMenuEnabled:true,animation:"slide_from_right"}}>
-        
-      </Stack.Screen>
+      
     </Stack>
     </SafeAreaView>
   

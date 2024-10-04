@@ -1,19 +1,32 @@
-import {  SafeAreaView, Text, View } from "react-native";
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
-import { Link } from "expo-router";
-
+import {   Button, Image, Pressable, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Logo from "../assets/images/logo.png"
+import Cards from "../assets/images/cards.png"
+import { Link, router } from "expo-router";
 export default function Index() {
+
+  let handlePress = () =>{
+      router.push("/(auth)/signup")
+  }
+
+
   return (
-    <SafeAreaView className=" flex-1 bg-pink-400">
-      <ExpoStatusBar backgroundColor="pink" style="dark" translucent={false} />
-      <Link href={"/(auth)/login"}>
-      
-        <Text className = " text-white" >Get started!</Text>
-      </Link> 
-      <Link href={"/(tabs)/home"}>
-      
-        <Text className = " text-white" >Go to home!</Text>
-      </Link>
-    </SafeAreaView>
+    <View className=" flex-1 bg-[#161622] items-center gap-5 pt-10 ">
+        <Image resizeMode="contain" className="w-1/2 h-10" source={Logo}></Image>
+        <Image resizeMode="contain" className="w-[100%] h-[260px]" source={Cards}></Image>
+        
+        <Text className="text-3xl text-white font-bold text-center">
+              Discover Endless{"\n"}
+              Possibilities with{" "}
+              <Text className="text-[#ff8c00]">Aora</Text>
+            </Text>
+        <Text className="text-[#CDCDE0] w-[80%] text-center">Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora. </Text>
+        
+        
+        <TouchableOpacity onPress={handlePress} className=" py-2 px-6 text-lg   rounded-sm text-[#161622] bg-[#ff8c00] bg-gradient-to-r from-[#ff8c00] to-[#ffa300]">
+          <Text >Continue with email</Text>
+        </TouchableOpacity>
+       
+    </View>
   );
 }
