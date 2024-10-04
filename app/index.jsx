@@ -27,6 +27,8 @@ export default function Index() {
           <Text >Continue with email</Text>
         </TouchableOpacity>
        
+
+       <Link href={'/(tabs)/home'}> <Text className="text-white">Go to tabs (temporary)</Text></Link>
     </View>
   );
 }

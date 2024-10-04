@@ -6,7 +6,17 @@ import { FontAwesome } from '@expo/vector-icons'
 
 const _layout = () => {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+    
+    <Tabs screenOptions={{ 
+      tabBarActiveTintColor: '#FFA001' ,
+      tabBarStyle:{
+        backgroundColor:"#161622",
+        borderTopWidth: 1,
+            borderTopColor: "#232533",
+            height: 54,
+        
+      }}}
+    >
     <Tabs.Screen
       name="home"
       options={{
@@ -35,7 +45,7 @@ const _layout = () => {
       options={{
         headerShown:false,
         title: 'Profile',
-        tabBarIcon: ({ color }) => <FontAwesome size={28} name="user-circle" color={color} />,
+        tabBarIcon: ({ color }) => <FontAwesome size={28} name="user" color={color} />,
       }}
     />
     </Tabs>
