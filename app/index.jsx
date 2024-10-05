@@ -23,8 +23,8 @@ export default function Index() {
         <Text className="text-[#CDCDE0] w-[80%] text-center">Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora. </Text>
         
         
-        <TouchableOpacity onPress={handlePress} className=" py-2 px-6 text-lg   rounded-sm text-[#161622] bg-[#ff8c00] bg-gradient-to-r from-[#ff8c00] to-[#ffa300]">
-          <Text >Continue with email</Text>
+        <TouchableOpacity onPress={handlePress} className=" py-2 px-20 flex items-center justify-center text-center rounded-sm text-[#161622] bg-[#ff8c00] ">
+          <Text className= "font-semibold text-2x">Continue with Email</Text>
         </TouchableOpacity>
        
 
