@@ -46,7 +46,7 @@ const Signup = () => {
             </View>
 
           <TouchableOpacity onPress={handlePress} className=" py-3 px-2  rounded-lg  flex justify-center items-center font-bold  text-[#161622] bg-[#ff8c00]">
-              <Text className="text-lg font-semibold" >Signup</Text>
+              <Text className="text-lg font-semibold" >Sign Up</Text>
             </TouchableOpacity>
 
           <Link href={"/login"} className='w-full h-10 text-center '>

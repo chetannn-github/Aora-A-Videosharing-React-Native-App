@@ -39,8 +39,8 @@ let toggleShowPassword = () =>{
                   
             </View>
 
-          <TouchableOpacity onPress={handlePress} className=" py-4 px-2  rounded-lg  flex justify-center items-center font-bold  text-[#161622] bg-[#ff8c00]">
-              <Text className="text-lg font-semibold" >Login</Text>
+          <TouchableOpacity onPress={handlePress} className=" py-3 px-2  rounded-lg  flex justify-center items-center font-bold  text-[#161622] bg-[#ff8c00]">
+              <Text className="text-lg font-semibold" >Log In</Text>
             </TouchableOpacity>
 
           <Link href={"/signup"} className='w-full h-10 text-center '>
