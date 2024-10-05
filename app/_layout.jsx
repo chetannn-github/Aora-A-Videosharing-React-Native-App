@@ -3,11 +3,15 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Slot, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
+import { Provider } from 'react-redux'
+import { appStore } from '../redux/appstore'
 
 const RootLayout = () => {
   return (
- 
-     <SafeAreaView className= "h-full bg-red-900 ">
+    <Provider store={appStore}>
+
+   
+     <SafeAreaView className= "h-full bg-secondary ">
      
     {/* stack navigation setup */}
     <Stack > 
@@ -30,6 +34,7 @@ const RootLayout = () => {
       
     </Stack>
     </SafeAreaView>
+    </Provider>
   
   )
 }

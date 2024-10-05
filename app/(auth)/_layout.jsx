@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 const AuthLayout = () => {
   return (
     <SafeAreaView className="h-full bg-red-500 w-fit">
-        <ExpoStatusBar backgroundColor="yellow" style="dark" translucent={false} />
+        <ExpoStatusBar backgroundColor="#ff9c01" style="dark" translucent={false} />
         
         <Slot/>
        
