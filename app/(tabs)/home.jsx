@@ -1,11 +1,42 @@
 import { View, Text, TextInput, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome } from '@expo/vector-icons'
 import Post from '../../components/Post/Post'
 import { useSelector } from 'react-redux'
+import { appwriteConfig, databases } from '../../lib/appwrite'
 const Home = () => {
   let loggedInUser = useSelector((store)=>(store.user.loggedInUser));
+  // get all posts 
+let [posts , setPosts] = useState([]);
+  let getAllPosts = async () =>{
+    try {
+      let res= await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.videoCollectionId,
+
+      )
+       setPosts(res?.documents)
+       console.log(posts[0])
+
+
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+   useEffect(()=>{getAllPosts()},[]) 
+
+   
+
+
+
+
+
+
+
   return (
     <SafeAreaView className="  bg-[#161622] w-full mb-[100px] items-center">
       <View className="w-[90%]  h-fit ">
@@ -21,7 +52,8 @@ const Home = () => {
       
 
       <ScrollView className="flex mb-5 max-h-fit w-full">
-        <Post/><Post/><Post/>
+        {!posts &&<Text className="text-black">Loading.....</Text>}
+       {posts.length>0&&posts.map((post,index)=>(<Post title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
       </ScrollView>
 
       

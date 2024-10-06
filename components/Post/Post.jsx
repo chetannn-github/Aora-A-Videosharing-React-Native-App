@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import PostThumbnail from "../../assets/preview/homepage.jpeg"
 import PostImage from "../../assets/images/thumbnail.png"
 import Profile from "../../assets/images/profile.png"
-let Post = ()=> {
+let Post = ({title,owner,ownerImg,thumbnail})=> {
    
     return (
       <View className="w-[100%]  items-center gap-y-3 mt-2 ">
@@ -12,16 +12,16 @@ let Post = ()=> {
         
         <View className="flex flex-row   w-[90%] items-start justify-between">
           <View className="w-[48px] h-[40px] border-[1.5px] border-secondary rounded-md overflow-hidden ">
-            <Image resizeMode='cover' source={Profile}  className="h-full w-full " ></Image>
+            <Image resizeMode='cover' source={{uri:ownerImg}} className="h-full w-full " ></Image>
           </View>
             <View className="w-[80%]   flex ">
-              <Text className="text-white text-[14px] font-pregular ">this is post title </Text> 
-              <Text className="text-[#CDCDE0] text-xs font-pregular">chetan</Text>
+              <Text className="text-white text-[14px] font-pregular ">{title}</Text> 
+              <Text className="text-[#CDCDE0] text-xs font-pregular">{owner}</Text>
             </View>
             <FontAwesome size={22} name="ellipsis-v" color={"#CDCDE0"} className="" />
         </View>
         
-        <Image resizeMode='cover' className="w-[90%] h-[300px] rounded-lg" source={PostImage}  ></Image>
+        <Image resizeMode='cover' className="w-[90%] h-[300px] rounded-lg" source={{uri:thumbnail}}  ></Image>
       </View>
     )
   }

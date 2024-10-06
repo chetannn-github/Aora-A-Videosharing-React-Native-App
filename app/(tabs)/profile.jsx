@@ -1,26 +1,53 @@
 import { View, Text, Pressable, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, router, Stack } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { logoutUser } from '../../lib/appwrite'
+import { appwriteConfig, databases, logoutUser } from '../../lib/appwrite'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeLoggedInUser } from '../../redux/userSlice'
 import Post from '../../components/Post/Post'
 import UserProfileHeader from '../../components/Post/UserProfileHeader'
 import { FontAwesome, FontAwesome6 } from '@expo/vector-icons'
 import noPostImage from "../../assets/images/empty.png"
+import { Query } from 'react-native-appwrite'
 
 
 const Profile = () => {
   let dispatch = useDispatch();
   let loggedInUser = useSelector((store) =>(store.user.loggedInUser));
+  let [posts , setPosts] = useState([]);
+  let getUserPosts = async () =>{
+    try {
+      let res= await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.videoCollectionId,
+       [ Query.equal('creator', loggedInUser.$id)]
+
+      )
+       setPosts(res?.documents)
+       console.log(posts[0])
+
+
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+   useEffect(()=>{getUserPosts()},[]) 
+
+  
    console.log("profile page -------------------------"+loggedInUser);
+
+   //find posts of loggedin user
+
   
   return (
     <SafeAreaView className=" flex-1 bg-[#161622]    ">
       
     
-      <UserProfileHeader/>
+      <UserProfileHeader totalPosts={posts.length} />
 
 
       {/* no posts  */}
@@ -37,7 +64,7 @@ const Profile = () => {
       </View> */}
 
       <ScrollView className="flex mb-5 max-h-fit">
-        <Post/><Post/><Post/>
+      {posts.length>0&&posts.map((post,index)=>(<Post key={`${index}+443ewer3`} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
       </ScrollView>
     
     
