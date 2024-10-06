@@ -1,8 +1,9 @@
 # Welcome to your Aora app 👋
 <p float="left">
-  <img src="./assets/preview/homepage.jpeg" width="300" />
-  <img src="./assets/preview/preview2.jpg" width="300" />
-  <img src="./assets/preview/preview3.jpg" width="300" />
+  <img src="./assets/preview/homepage.jpeg" width="30%" />
+  <img src="./assets/preview/preview2.jpg" width="30%" />
+  <img src="./assets/preview/preview3.jpg" width="30%" />
+  <img src="./assets/preview/preview4.jpg" width="30%" />
 </p>
 
 ## Get started
