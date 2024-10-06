@@ -6,18 +6,21 @@ import Logo from "../../assets/images/logo.png"
 import eyehide from "../../assets/icons/eye-hide.png"
 import eye from "../../assets/icons/eye.png"
 import { createUser, signin } from '../../lib/appwrite';
+import { addLoggedInUser } from '../../redux/userSlice';
+import { useDispatch } from 'react-redux';
 
 
 const Signup = () => {
   let [showPassword , setShowPassword] = useState(false);
-  
+  let dispatch = useDispatch();
   let inputs = useRef({email:"",password:"",username:""});
 
   let handleSignup = async() => {
     if (!inputs.current.email || !inputs.current.password || !inputs.current.username) {
       Alert.alert('Error', 'Please fill in all fields!');
     } else {
-      await signin(inputs.current.email,inputs.current.password,inputs.current.username);
+     let user =  await createUser(inputs.current.email,inputs.current.password,inputs.current.username);
+      dispatch(addLoggedInUser(user))
       router.navigate("/home")
     }
   };

@@ -2,9 +2,28 @@ import {   Button, Image, Pressable, Text, TouchableOpacity, View } from "react-
 import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from "../assets/images/logo.png"
 import Cards from "../assets/images/cards.png"
-import { Link, router } from "expo-router";
-export default function Index() {
+import { Link, Redirect, router } from "expo-router";
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react";
+import {getLoggedInUser} from "../lib/appwrite"
 
+export default function Index() {
+  let loggedInUser = useSelector((store) =>(store.user.loggedInUser));
+  
+  let dispatch = useDispatch();
+
+  // check for loggedin user for the first time
+  useEffect(()=>{
+   getLoggedInUser(dispatch);
+    
+  
+  },[])
+
+ if(loggedInUser) {
+    return <Redirect href={"/(tabs)/home"}></Redirect>
+  }
+
+ 
   let handlePress = () =>{
       router.push("/(auth)/signup")
   }

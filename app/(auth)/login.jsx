@@ -5,11 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Logo from "../../assets/images/logo.png"
 import eyehide from "../../assets/icons/eye-hide.png"
 import eye from "../../assets/icons/eye.png"
-import { signin } from '../../lib/appwrite';
+import { getLoggedInUser, signin } from '../../lib/appwrite';
+import { useDispatch } from 'react-redux';
+import { addLoggedInUser } from '../../redux/userSlice';
 
 const Login = () => {
   let [showPassword , setShowPassword] = useState(false);
   let inputs = useRef({email:"",password:""});
+  let dispatch = useDispatch();
   
   let toggleShowPassword = () =>{
   setShowPassword(!showPassword);
@@ -21,7 +24,13 @@ const Login = () => {
     } else {
       try {
          await signin(inputs.current.email,inputs.current.password);
-      router.navigate("/home")
+       
+
+        await getLoggedInUser()
+        
+         
+         
+      router.navigate("/home");
       } catch (error) {
         throw new Error (error)
       }
@@ -49,7 +58,7 @@ const Login = () => {
                   <Text className="text-lg text-[#cdcde0]">password</Text>
                   
                   <View className="flex flex-row justify-between">
-                    <TextInput onChangeText={(text) => inputs.current.password = text} secureTextEntry={true && !showPassword} placeholder='enter your password'  placeholderTextColor={"#7B7B8B"} className="focus:border-secondary focus:border-2 h-[55px] w-[100%] text-white text-base rounded-lg bg-[#1E1E2D] px-4"/>
+                    <TextInput  onChangeText={(text) => inputs.current.password = text} secureTextEntry={true && !showPassword} placeholder='enter your password'  placeholderTextColor={"#7B7B8B"} className="focus:border-secondary focus:border-2 h-[55px] w-[100%] text-white text-base rounded-lg bg-[#1E1E2D] px-4"/>
                     <TouchableOpacity className="w-10 -translate-x-10  flex items-center justify-center " onPress={toggleShowPassword}><Image className="w-[25px] h-[25px]" resizeMode='contain' source={showPassword? eyehide:eye}></Image></TouchableOpacity>
                   </View>
                   

@@ -1,12 +1,16 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Slot, Stack } from 'expo-router'
+import { Redirect, Slot, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { appStore } from '../redux/appstore'
 
 const RootLayout = () => {
+ 
+ 
+
+  
   return (
     <Provider store={appStore}>
 

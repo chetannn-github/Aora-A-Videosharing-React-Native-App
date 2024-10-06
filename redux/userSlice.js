@@ -8,9 +8,13 @@ const userSlice =createSlice ({
     reducers:{
         addLoggedInUser :(state,actions) =>{
             state.loggedInUser = actions.payload;
+            console.log("guuguuu")
+            console.log(state.loggedInUser);
         },
         removeLoggedInUser: (state, actions) =>{
-            state.loggedInUser= null;
+            console.log("user Removed")
+             console.log(state.loggedInUser);
+             state.loggedInUser= null;
         }
     }
 })
