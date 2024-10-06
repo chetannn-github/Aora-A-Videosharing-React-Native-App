@@ -5,9 +5,9 @@ import Post from '../../components/Post/Post'
 
 const Bookmark = () => {
   return (
-    <SafeAreaView className=" flex-1 bg-[#161622]  gap-5">
-      <Text className="text-white">Search Results</Text>
-      <ScrollView className="flex mb-5 max-h-fit">
+    <SafeAreaView className=" flex-1 bg-[#161622] items-center  gap-5">
+      <Text  className="text-white text-2xl w-[90%] font-pmedium">Saved Posts</Text>
+      <ScrollView className="flex mb-5 max-h-fit  w-full">
         <Post/><Post/><Post/>
       </ScrollView>
     </SafeAreaView>

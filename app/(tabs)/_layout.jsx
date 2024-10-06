@@ -20,6 +20,7 @@ const _layout = () => {
     <Tabs.Screen
       name="home"
       options={{
+        title:"Home",
         headerShown:false,
         tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
       }}
@@ -28,7 +29,7 @@ const _layout = () => {
       name="bookmark"
       options={{
         headerShown:false,
-        title: 'Settings',
+        title: 'Saved',
         tabBarIcon: ({ color }) => <FontAwesome size={28} name="bookmark" color={color} />,
       }}
     />

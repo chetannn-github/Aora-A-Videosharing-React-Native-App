@@ -7,7 +7,7 @@ import Profile from "../../assets/images/profile.png"
 let Post = ()=> {
    
     return (
-      <View className="w-[100%] items-center gap-y-3 mt-2 ">
+      <View className="w-[100%]  items-center gap-y-3 mt-2 ">
 
         
         <View className="flex flex-row   w-[90%] items-start justify-between">
@@ -15,8 +15,8 @@ let Post = ()=> {
             <Image resizeMode='cover' source={Profile}  className="h-full w-full " ></Image>
           </View>
             <View className="w-[80%]   flex ">
-              <Text className="text-white text-[14px] ">this is post title </Text> 
-              <Text className="text-[#CDCDE0] text-xs">chetan</Text>
+              <Text className="text-white text-[14px] font-pregular ">this is post title </Text> 
+              <Text className="text-[#CDCDE0] text-xs font-pregular">chetan</Text>
             </View>
             <FontAwesome size={22} name="ellipsis-v" color={"#CDCDE0"} className="" />
         </View>

@@ -32,7 +32,7 @@ export default function Index() {
         <Image resizeMode="contain" className="w-1/2 h-10" source={Logo}></Image>
         <Image resizeMode="contain" className="w-[100%] h-[260px]" source={Cards}></Image>
         
-        <Text className="text-3xl text-white font-bold text-center">
+        <Text className="text-3xl text-white  text-center  font-pbold">
               Discover Endless{"\n"}
               Possibilities with{" "}
               <Text className="text-[#ff8c00]">Aora</Text>
