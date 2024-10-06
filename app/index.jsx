@@ -15,8 +15,6 @@ export default function Index() {
   // check for loggedin user for the first time
   useEffect(()=>{
    getLoggedInUser(dispatch);
-    
-  
   },[])
 
  if(loggedInUser) {
