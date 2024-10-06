@@ -9,7 +9,7 @@ import { router } from 'expo-router'
 import logoutImage from "../../assets/icons/logout.png"
 
 
-const UserProfileHeader = () => {
+const UserProfileHeader = ({totalPosts}) => {
     let loggedInUser = useSelector((store) =>(store.user.loggedInUser));
     let dispatch = useDispatch();
     let handleLogout = ()=>{
@@ -33,12 +33,12 @@ const UserProfileHeader = () => {
         <Pressable onPress={handleLogout} className="self-end"><Image className="h-[20px] w-[20px] " source={logoutImage}></Image></Pressable>
 
         <View className="w-[106px] h-[106px] border-[1.5px] border-secondary rounded-md overflow-hidden ">
-            <Image resizeMode='cover' source={Profile}  className="h-full w-full " ></Image>
+            <Image resizeMode='cover' source={{uri:loggedInUser?.avatar}}  className="h-full w-full " ></Image>
             
         </View>
         <Text className="text-white text-[18px]">{loggedInUser?.username} </Text>
         <View className="w-[106px]  flex flex-col items-center  mt-3 ">
-            <Text className="text-2xl text-white">10</Text>
+            <Text className="text-2xl text-white">{totalPosts}</Text>
             <Text className="text-[#cdcde0]">Posts</Text>
         </View>
     </View>

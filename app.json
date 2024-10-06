@@ -21,7 +21,8 @@
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
       },
-      "package" : "com.chetan.aora"
+      "package" : "com.chetan.aora",
+      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
     },
     "web": {
       "bundler": "metro",
@@ -29,7 +30,15 @@
       "favicon": ""
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+      
+
     ],
     "experiments": {
       "typedRoutes": true
