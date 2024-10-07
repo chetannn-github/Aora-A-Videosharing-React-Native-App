@@ -8,6 +8,7 @@ import { appwriteConfig, databases } from '../../lib/appwrite'
 const Home = () => {
   let loggedInUser = useSelector((store)=>(store.user.loggedInUser));
   let searchTxt = useRef("");
+ 
     // get all posts 
 let [posts , setPosts] = useState([]);
 let [copyPosts,setCopyPosts] =useState([])
