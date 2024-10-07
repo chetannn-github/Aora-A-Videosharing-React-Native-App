@@ -70,7 +70,7 @@ let [copyPosts,setCopyPosts] =useState([])
 
       <ScrollView className="flex mb-5 max-h-fit w-full">
         {!posts &&<Text className="text-black">Loading.....</Text>}
-       {posts.length>0&&posts.map((post,index)=>(<Post title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
+       {posts.length>0&&posts.map((post,index)=>(<Post key={index} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar} videoURL={post.videoURL}/>))}
       </ScrollView>
 
       

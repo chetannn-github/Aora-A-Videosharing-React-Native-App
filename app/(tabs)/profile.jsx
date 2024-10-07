@@ -64,7 +64,7 @@ const Profile = () => {
       </View> */}
 
       <ScrollView className="flex mb-5 max-h-fit">
-      {posts.length>0&&posts.map((post,index)=>(<Post key={`${index}+443ewer3`} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
+      {posts.length>0&&posts.map((post,index)=>(<Post key={`${index}+443ewer3`} videoURL={post.videoURL} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
       </ScrollView>
     
     
