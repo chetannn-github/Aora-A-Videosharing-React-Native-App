@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Pressable, ScrollView, Image, TouchableOpacity, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link, router, Stack } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -16,6 +16,7 @@ const Profile = () => {
   let dispatch = useDispatch();
   let loggedInUser = useSelector((store) =>(store.user.loggedInUser));
   let [posts , setPosts] = useState([]);
+  let [isRefresh , setIsRefresh] = useState(false);
   let getUserPosts = async () =>{
     try {
       let res= await databases.listDocuments(
@@ -37,6 +38,13 @@ const Profile = () => {
   
    useEffect(()=>{getUserPosts()},[]) 
 
+   
+   let handleRefresh = ()=>{
+    setIsRefresh(true);
+    getUserPosts();
+    setIsRefresh(false);
+}
+
   
    console.log("profile page -------------------------"+loggedInUser);
 
@@ -44,7 +52,7 @@ const Profile = () => {
 
   
   return (
-    <SafeAreaView className=" flex-1 bg-[#161622]    ">
+    <SafeAreaView className=" flex-1 bg-[#161622]   " >
       
     
       <UserProfileHeader totalPosts={posts.length} />
@@ -63,7 +71,8 @@ const Profile = () => {
               </TouchableOpacity>
       </View> */}
 
-      <ScrollView className="flex mb-5 max-h-fit">
+      <ScrollView className="flex mb-5 max-h-fit" refreshControl={<RefreshControl refreshing={isRefresh} 
+            onRefresh={handleRefresh}/>}>
       {posts.length>0&&posts.map((post,index)=>(<Post key={`${index}+443ewer3`} videoURL={post.videoURL} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar}/>))}
       </ScrollView>
     

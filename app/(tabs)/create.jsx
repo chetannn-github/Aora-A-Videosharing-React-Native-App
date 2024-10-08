@@ -92,22 +92,6 @@ const Create = () => {
   }
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <SafeAreaView className=" flex-1 bg-[#161622] items-center">
     <View className="w-[90%] h-full  ">

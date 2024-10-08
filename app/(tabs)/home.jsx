@@ -1,13 +1,16 @@
-import { View, Text, TextInput, ScrollView } from 'react-native'
+import { View, Text, TextInput, ScrollView, RefreshControl } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome } from '@expo/vector-icons'
 import Post from '../../components/Post/Post'
 import { useSelector } from 'react-redux'
 import { appwriteConfig, databases } from '../../lib/appwrite'
+
+
 const Home = () => {
   let loggedInUser = useSelector((store)=>(store.user.loggedInUser));
   let searchTxt = useRef("");
+  let [isRefresh , setIsRefresh] = useState(false);
  
     // get all posts 
 let [posts , setPosts] = useState([]);
@@ -50,13 +53,17 @@ let [copyPosts,setCopyPosts] =useState([])
    }
 
 
-
+   let handleRefresh = ()=>{
+    setIsRefresh(true);
+    getAllPosts();
+    setIsRefresh(false);
+}
 
 
 
 
   return (
-    <SafeAreaView className="  bg-[#161622] w-full mb-[100px] items-center">
+    <SafeAreaView className="  bg-[#161622] w-full mb-[100px] items-center" >
       <View className="w-[90%]  h-fit ">
         <Text className="text-[#CDCDE0] text-[14px]  font-pregular">Welcome Back</Text>
               <Text className="text-white text-2xl font-pregular mb-2">{loggedInUser?.username} </Text>
@@ -69,7 +76,8 @@ let [copyPosts,setCopyPosts] =useState([])
       </View>
       
 
-      <ScrollView className="flex mb-5 max-h-fit w-full">
+      <ScrollView refreshControl={<RefreshControl refreshing={isRefresh} 
+            onRefresh={handleRefresh}/>} className="flex mb-5 max-h-fit w-full">
         {!posts &&<Text className="text-black">Loading.....</Text>}
        {posts.length>0&&posts.map((post,index)=>(<Post key={index} title={post.title} thumbnail={post.thumbnail} owner={post.creator.username} ownerImg = {post.creator.avatar} videoURL={post.videoURL}/>))}
       </ScrollView>
